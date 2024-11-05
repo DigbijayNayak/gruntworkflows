@@ -31,10 +31,25 @@ module.exports = function (grunt) {
         ],
       },
     }, //sass
+
+    watch: {
+      options: {
+        spawn: false,
+      },
+      scripts: {
+        files: [
+          'builds/development/**/*.html',
+          'components/scripts/**/*.js',
+          'components/sass/**/*.scss',
+        ],
+        tasks: ['concat', 'sass'],
+      },
+    },
   }); //initConfig
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['concat', 'sass']);
+  grunt.registerTask('default', ['concat', 'sass', 'watch']);
 }; //wrapper function
