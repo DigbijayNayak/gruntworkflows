@@ -7,6 +7,13 @@ module.exports = function (grunt) {
         separator: '\n\n//---------------------------------------------\n',
         banner: '\n\n//------------------------------------------------\n',
       },
+      css: {
+        src: [
+          'bower_components/bootstrap/dist/css/bootstrap.min.css',
+          // Add other CSS dependencies here if needed
+        ],
+        dest: 'builds/development/css/_bower.css',
+      },
       dist: {
         src: ['components/scripts/*.js'],
         dest: 'builds/development/js/script.js',
@@ -16,6 +23,31 @@ module.exports = function (grunt) {
         dest: 'builds/production/js/script.js',
       },
     }, //concat
+
+    // bower_concat: {
+    //   all: {
+    //     dest: 'builds/development/js/_bower.js',
+    //     cssDest: 'builds/development/css/_bower.css',
+    //   },
+    // },
+    bower_concat: {
+      all: {
+        dest: 'builds/development/js/_bower.js',
+        include: ['bootstrap', 'mustache'],
+      },
+    },
+
+    // Minify the concatenated CSS file
+    cssmin: {
+      target: {
+        files: [
+          {
+            src: 'builds/development/css/_bower.css',
+            dest: 'builds/development/css/_bower.min.css',
+          },
+        ],
+      },
+    },
 
     sass: {
       dist: {
@@ -70,9 +102,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-wiredep');
+  grunt.loadNpmTasks('grunt-bower-concat');
 
   grunt.registerTask('default', [
     'wiredep',
+    'bower_concat',
     'concat',
     'sass',
     'connect',
