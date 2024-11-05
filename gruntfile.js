@@ -32,6 +32,12 @@ module.exports = function (grunt) {
       },
     }, //sass
 
+    wiredep: {
+      task: {
+        src: 'builds/development/**/*.html',
+      },
+    },
+
     connect: {
       server: {
         options: {
@@ -63,6 +69,13 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-wiredep');
 
-  grunt.registerTask('default', ['concat', 'sass', 'connect', 'watch']);
+  grunt.registerTask('default', [
+    'wiredep',
+    'concat',
+    'sass',
+    'connect',
+    'watch',
+  ]);
 }; //wrapper function

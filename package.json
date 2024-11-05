@@ -9,7 +9,8 @@
     "grunt-contrib-concat": "^2.1.0",
     "grunt-contrib-connect": "^5.0.1",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-sass": "^3.1.0"
+    "grunt-sass": "^3.1.0",
+    "grunt-wiredep": "^3.0.1"
   },
   "dependencies": {
     "node-sass": "^9.0.0"

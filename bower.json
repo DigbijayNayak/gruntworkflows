@@ -2,21 +2,18 @@
   "name": "gruntworkflows",
   "description": "Project for Grunt Workflows Course",
   "main": "",
-  "authors": [
-    "Digbijay Nayak"
-  ],
+  "authors": ["Digbijay Nayak"],
   "license": "MIT",
   "homepage": "https://github.com/DigbijayNayak/gruntworkflows",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
   "dependencies": {
     "bootstrap": "^5.3.3",
     "mustache": "^4.2.0"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": ["dist/css/bootstrap.min.css", "dist/js/bootstrap.bundle.min.js"]
+    }
   }
 }
